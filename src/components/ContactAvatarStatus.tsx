@@ -6,14 +6,11 @@ type Props = ContactAvatarProps & {
 };
 
 function ContactAvatarStatus({ isActive, ...contactAvatarProps }: Props) {
-  const bgColor = isActive ? "bg-green-500" : "bg-gray-500";
+  const borderColor = isActive ? "border-green-500" : "border-gray-500";
 
   return (
-    <div className="relative">
+    <div className={`border-4 rounded-full ${borderColor}`}>
       <ContactAvatar {...contactAvatarProps} />
-      <div
-        className={`h-4 w-4 rounded-full absolute right-0 bottom-0 shadow-md ${bgColor}`}
-      />
     </div>
   );
 }
