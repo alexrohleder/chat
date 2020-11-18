@@ -1,12 +1,9 @@
 import React from "react";
+import { User } from "../state";
 import ContactAvatar from "./ContactAvatar";
 import ContactOnlineStatus from "./ContactOnlineStatus";
 
-type Props = {
-  name: string;
-  photo: string;
-  lastMessage?: string;
-  isActive: boolean;
+type Props = User & {
   isSelected?: boolean;
 };
 
@@ -25,10 +22,8 @@ function Contact(props: Props) {
           <div className="font-bold truncate">{props.name}</div>
           <ContactOnlineStatus isActive={props.isActive} />
         </div>
-        <div className="truncate">
-          {props.lastMessage || (
-            <span className="text-gray-700">Click to send a message</span>
-          )}
+        <div className="truncate text-gray-700 text-sm">
+          Click to send a message
         </div>
       </div>
     </div>

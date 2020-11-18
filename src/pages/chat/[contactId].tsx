@@ -3,28 +3,17 @@ import Layout from "../../components/Layout";
 import Chat from "../../components/Chat";
 import ContactList from "../../components/ContactList";
 
-const contacts = [
-  {
-    id: 2,
-    name: "Alex Rohleder",
-    photo: "/profiles/alexrohleder.jpg",
-    isActive: true,
-  },
-];
-
 export default function ChatPage() {
   const router = useRouter();
+  const contactId = parseInt(router.query.contactId as string, 10);
 
   return (
     <Layout title="Chat">
       <div className="hidden lg:block">
-        <ContactList
-          contacts={contacts}
-          selectedUserId={parseInt(router.query.senderId as string, 10)}
-        />
+        <ContactList selectedUserId={contactId} />
       </div>
       <div className="lg:col-span-3">
-        <Chat />
+        <Chat contactId={contactId} />
       </div>
     </Layout>
   );

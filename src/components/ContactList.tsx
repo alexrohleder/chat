@@ -1,16 +1,19 @@
+import { useAtom } from "jotai";
 import Link from "next/link";
 import React from "react";
+import { contactsAtom } from "../state";
 import Contact from "./Contact";
 
 type Props = {
-  contacts: any[];
   selectedUserId?: number;
 };
 
 function ContactList(props: Props) {
+  const [contacts] = useAtom(contactsAtom);
+
   return (
     <div className="flex flex-col gap-4">
-      {props.contacts.map((contact) => (
+      {contacts.map((contact) => (
         <Link href={`/chat/${contact.id}`} key={contact.id}>
           <a>
             <Contact

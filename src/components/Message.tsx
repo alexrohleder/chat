@@ -1,10 +1,5 @@
 import React from "react";
-
-type Props = {
-  id: number;
-  senderId: number;
-  content: string;
-};
+import { Message as Props } from "../state";
 
 function Message(props: Props) {
   const variant =
