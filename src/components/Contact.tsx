@@ -7,8 +7,7 @@ type Props = {
   photo: string;
   lastMessage?: string;
   isActive: boolean;
-  isSelected: boolean;
-  onClick: () => void;
+  isSelected?: boolean;
 };
 
 function Contact(props: Props) {
@@ -17,10 +16,7 @@ function Contact(props: Props) {
     : "hover:bg-gray-200 hover:border-gray-400 cursor-pointer transition-colors ease-in-out duration-150";
 
   return (
-    <div
-      className={`flex gap-4 items-center p-4 rounded-md border ${variant}`}
-      onClick={props.onClick}
-    >
+    <div className={`flex gap-4 items-center p-4 rounded-md border ${variant}`}>
       <ContactAvatar size="lg" src={props.photo} name={props.name} />
       <div className="flex flex-1 flex-col gap-1 overflow-hidden">
         <div className="flex justify-between items-center overflow-hidden">
