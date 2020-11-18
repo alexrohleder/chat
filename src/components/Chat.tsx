@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import React from "react";
+import React, { useMemo } from "react";
 import ChatInput from "./ChatInput";
 import { chatAtom } from "../selectors";
 import MessageContainer from "./MessageContainer";
@@ -9,7 +9,9 @@ type Props = {
 };
 
 function Chat(props: Props) {
-  const [chatMessages] = useAtom(chatAtom(props.contactId));
+  const [chatMessages] = useAtom(
+    useMemo(() => chatAtom(props.contactId), [props.contactId])
+  );
 
   return (
     <div className="flex flex-col gap-4 h-full">
