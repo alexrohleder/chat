@@ -9,10 +9,10 @@ export default function ChatPage() {
 
   return (
     <Layout title="Chat">
-      <div className="hidden lg:block">
+      <div className="hidden lg:block lg:w-1/4">
         <ContactList selectedUserId={contactId} />
       </div>
-      <div className="lg:col-span-3">
+      <div className="lg:col-span-3 lg:flex-1">
         <Chat contactId={contactId} />
       </div>
     </Layout>

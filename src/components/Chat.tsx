@@ -18,7 +18,9 @@ function Chat(props: Props) {
       <div className="flex-1">
         <MessageContainer messages={chatMessages} />
       </div>
-      <ChatInput contactId={props.contactId} />
+      <div className="sticky bottom-0">
+        <ChatInput contactId={props.contactId} />
+      </div>
     </div>
   );
 }

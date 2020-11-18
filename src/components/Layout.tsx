@@ -9,13 +9,13 @@ type Props = {
 
 function Layout(props: Props) {
   return (
-    <div className="flex flex-col bg-gray-100 h-screen">
+    <div className="flex flex-col bg-gray-100 min-h-screen">
       <Head>
         <title>{props.title}</title>
       </Head>
       <LayoutHeader />
-      <main className="flex-1 lg:container lg:m-auto p-4">
-        <div className="grid lg:grid-cols-4 gap-4 h-full">{props.children}</div>
+      <main className="flex-1 p-4 lg:container lg:m-auto lg:flex lg:gap-4">
+        {props.children}
       </main>
     </div>
   );

@@ -10,6 +10,14 @@ type Props = {
 function MessageContainer(props: Props) {
   const [user] = useAtom(userAtom);
 
+  if (props.messages.length === 0) {
+    return (
+      <div className="flex items-center justify-center bg-white border border-gray-200 rounded-md p-4 h-full">
+        No messages yet
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-2 bg-white border border-gray-200 rounded-md p-4 h-full">
       {props.messages.map((message) => (

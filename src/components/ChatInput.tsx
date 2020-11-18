@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useRef, useState } from "react";
 import { sendMessageAtom } from "../actions";
 
 type Props = {
@@ -7,6 +7,7 @@ type Props = {
 };
 
 function ChatInput(props: Props) {
+  const inputRef = useRef(null);
   const [value, setValue] = useState("");
   const [, sendMessage] = useAtom(sendMessageAtom);
 
@@ -16,6 +17,10 @@ function ChatInput(props: Props) {
     sendMessage({ receiverId: props.contactId, content: value });
 
     setValue("");
+
+    inputRef.current.focus(); // on mobile we loose focus
+
+    requestAnimationFrame(() => window.scrollTo(0, document.body.scrollHeight));
   }
 
   return (
@@ -24,6 +29,7 @@ function ChatInput(props: Props) {
       onSubmit={onSubmit}
     >
       <input
+        ref={inputRef}
         value={value}
         onChange={(event) => setValue(event.target.value)}
         className="h-full flex-1 border border-gray-400 rounded-md p-2"
