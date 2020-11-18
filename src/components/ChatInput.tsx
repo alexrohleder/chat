@@ -30,6 +30,7 @@ function ChatInput(props: Props) {
         placeholder="Write a message..."
         autoComplete="off"
         autoFocus
+        required
       />
       <button type="submit" className="btn">
         Send

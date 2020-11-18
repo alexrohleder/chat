@@ -5,6 +5,10 @@ export const sendMessageAtom = atom<
   null,
   { receiverId: number; content: string }
 >(null, (get, set, payload) => {
+  if (!payload.content) {
+    return;
+  }
+
   const currentMessages = get(messagesAtom);
 
   set(messagesAtom, [
