@@ -1,0 +1,33 @@
+{
+  "name": "chat",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "10.0.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tailwindcss": "^1.9.6"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.8",
+    "@types/react": "^16.9.56",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "2.1.2",
+    "typescript": "^4.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.{js,css,md}": "prettier --write"
+  }
+}
