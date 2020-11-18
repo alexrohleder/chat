@@ -1,7 +1,7 @@
 import { useSelector } from "jotai/utils.cjs";
 import React, { useCallback } from "react";
 import ChatInput from "./ChatInput";
-import MessageContainer from "./MessageContainer";
+import MessageList from "./MessageList";
 import { Message, messagesAtom } from "../state";
 
 type Props = {
@@ -24,7 +24,7 @@ function Chat(props: Props) {
   return (
     <div className="flex flex-col lg:h-full bg-white border rounded-md">
       <div className="flex-1">
-        <MessageContainer messages={chatMessages} />
+        <MessageList messages={chatMessages} />
       </div>
       <div className="sticky bottom-0 border-t">
         <ChatInput contactId={props.contactId} />

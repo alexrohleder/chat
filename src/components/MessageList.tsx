@@ -7,7 +7,7 @@ type Props = {
   messages: MessageType[];
 };
 
-function MessageContainer(props: Props) {
+function MessageList(props: Props) {
   const [user] = useAtom(userAtom);
 
   if (props.messages.length === 0) {
@@ -24,10 +24,8 @@ function MessageContainer(props: Props) {
         <div key={message.id}>
           <div className={message.senderId === user.id ? "float-right" : ""}>
             <Message
-              id={message.id}
-              senderId={message.senderId}
-              receiverId={message.receiverId}
               content={message.content}
+              isReceived={message.senderId !== user.id}
             />
           </div>
         </div>
@@ -36,4 +34,4 @@ function MessageContainer(props: Props) {
   );
 }
 
-export default MessageContainer;
+export default MessageList;

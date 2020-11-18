@@ -1,9 +1,12 @@
 import React from "react";
-import { Message as Props } from "../state";
+
+type Props = {
+  content: string;
+  isReceived: boolean;
+};
 
 function Message(props: Props) {
-  const variant =
-    props.senderId === 1 ? "bg-blue-700 text-white" : "bg-gray-300";
+  const variant = props.isReceived ? "bg-gray-300" : "bg-blue-700 text-white";
 
   return (
     <div className="flex gap-4 items-center">
