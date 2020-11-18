@@ -1,9 +1,6 @@
 import { atom } from "jotai";
-import {
-  contactsFixture,
-  messagesFixture,
-  userFixture,
-} from "./state.fixtures";
+import { atomWithReducer } from "jotai/utils.cjs";
+import * as fixtures from "./state.fixtures";
 
 export type Message = {
   id: number;
@@ -19,6 +16,24 @@ export type User = {
   isActive: boolean;
 };
 
-export const messagesAtom = atom<Message[]>(messagesFixture);
-export const userAtom = atom<User>(userFixture);
-export const contactsAtom = atom<User[]>(contactsFixture);
+export const userAtom = atom<User>(fixtures.user);
+export const contactsAtom = atom<User[]>(fixtures.contacts);
+
+type MessagesAtomReducerPayload = {
+  senderId: number;
+  receiverId: number;
+  content: string;
+};
+
+export const messagesAtom = atomWithReducer<
+  Message[],
+  MessagesAtomReducerPayload
+>(fixtures.messages, (current, message) => {
+  return [
+    ...current,
+    {
+      id: current.length + 1,
+      ...message,
+    },
+  ];
+});

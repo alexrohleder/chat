@@ -14,7 +14,7 @@ function Layout(props: Props) {
         <title>{props.title}</title>
       </Head>
       <LayoutHeader />
-      <main className="flex-1 p-4 lg:container lg:m-auto lg:flex lg:gap-4">
+      <main className="flex-1 flex flex-col p-4 lg:flex-row lg:container lg:m-auto lg:gap-4">
         {props.children}
       </main>
     </div>

@@ -1,6 +1,6 @@
 import { Message, User } from "./state";
 
-export const messagesFixture: Message[] = [
+export const messages: Message[] = [
   {
     id: 1,
     senderId: 2,
@@ -27,7 +27,7 @@ export const messagesFixture: Message[] = [
   },
 ];
 
-export const userFixture: User = {
+export const user: User = {
   id: 1,
   name: "Alex Rohleder",
   photo:
@@ -35,7 +35,7 @@ export const userFixture: User = {
   isActive: true,
 };
 
-export const contactsFixture: User[] = [
+export const contacts: User[] = [
   {
     id: 2,
     name: "Issaaf Kattan",

@@ -9,12 +9,12 @@ type Props = User & {
 
 function Contact(props: Props) {
   const variant = props.isSelected
-    ? "bg-gray-300 border-gray-300"
-    : "hover:bg-gray-300 hover:border-gray-300 cursor-pointer transition-colors ease-in-out duration-150";
+    ? "bg-gray-300"
+    : "hover:bg-gray-300 cursor-pointer transition-colors ease-in-out duration-150";
 
   return (
     <div
-      className={`flex gap-4 items-center p-4 rounded-md border border-transparent ${variant}`}
+      className={`flex gap-4 items-center -mx-4 p-4 lg:m-0 lg:p-4 lg:rounded-md ${variant}`}
     >
       <ContactAvatar size="lg" src={props.photo} name={props.name} />
       <div className="flex flex-1 flex-col gap-1 overflow-hidden">

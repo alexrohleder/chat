@@ -12,7 +12,7 @@ export default function ChatPage() {
       <div className="hidden lg:block lg:w-1/4">
         <ContactList selectedUserId={contactId} />
       </div>
-      <div className="lg:col-span-3 lg:flex-1">
+      <div className="flex-1">
         <Chat contactId={contactId} />
       </div>
     </Layout>

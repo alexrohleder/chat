@@ -12,18 +12,23 @@ function MessageContainer(props: Props) {
 
   if (props.messages.length === 0) {
     return (
-      <div className="flex items-center justify-center bg-white border border-gray-200 rounded-md p-4 h-full">
+      <div className="flex items-center justify-center p-4 h-full">
         No messages yet
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-2 bg-white border border-gray-200 rounded-md p-4 h-full">
+    <div className="flex flex-col gap-2 p-4 h-full">
       {props.messages.map((message) => (
         <div key={message.id}>
           <div className={message.senderId === user.id ? "float-right" : ""}>
-            <Message {...message} />
+            <Message
+              id={message.id}
+              senderId={message.senderId}
+              receiverId={message.receiverId}
+              content={message.content}
+            />
           </div>
         </div>
       ))}

@@ -1,6 +1,7 @@
 import { useAtom } from "jotai";
-import React, { FormEvent, useEffect, useRef, useState } from "react";
-import { sendMessageAtom } from "../actions";
+import { useUpdateAtom } from "jotai/utils.cjs";
+import React, { FormEvent, useEffect, useRef } from "react";
+import { messagesAtom, userAtom } from "../state";
 
 type Props = {
   contactId: number;
@@ -8,17 +9,18 @@ type Props = {
 
 function ChatInput(props: Props) {
   const inputRef = useRef(null);
-  const [value, setValue] = useState("");
-  const [, sendMessage] = useAtom(sendMessageAtom);
+  const [{ id: senderId }] = useAtom(userAtom);
+  const sendMessage = useUpdateAtom(messagesAtom);
 
   function onSubmit(event: FormEvent) {
     event.preventDefault();
 
-    sendMessage({ receiverId: props.contactId, content: value });
+    const content = inputRef.current.value;
 
-    setValue("");
+    sendMessage({ receiverId: props.contactId, senderId, content });
 
     inputRef.current.focus(); // on mobile we loose focus
+    inputRef.current.value = "";
 
     requestAnimationFrame(() => window.scrollTo(0, document.body.scrollHeight));
   }
@@ -30,15 +32,10 @@ function ChatInput(props: Props) {
   }, [props.contactId]);
 
   return (
-    <form
-      className="flex gap-4 bg-white border border-gray-200 rounded-md p-4"
-      onSubmit={onSubmit}
-    >
+    <form className="flex gap-4 p-4 bg-white" onSubmit={onSubmit}>
       <input
         ref={inputRef}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-        className="h-full flex-1 border border-gray-400 rounded-md p-2"
+        className="h-full flex-1 border rounded-md p-2"
         placeholder="Write a message..."
         autoComplete="off"
         autoFocus

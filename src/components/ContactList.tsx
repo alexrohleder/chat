@@ -12,7 +12,7 @@ function ContactList(props: Props) {
   const [contacts] = useAtom(contactsAtom);
 
   return (
-    <div className="flex flex-col gap-4 lg:sticky" style={{ top: 80 }}>
+    <div className="flex flex-col gap-2 lg:sticky" style={{ top: 80 }}>
       {contacts.map((contact) => (
         <Link href={`/chat/${contact.id}`} key={contact.id}>
           <a>
