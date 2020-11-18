@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useLayoutEffect, useRef, useState } from "react";
 import { sendMessageAtom } from "../actions";
 
 type Props = {
@@ -22,6 +22,10 @@ function ChatInput(props: Props) {
 
     requestAnimationFrame(() => window.scrollTo(0, document.body.scrollHeight));
   }
+
+  useLayoutEffect(() => {
+    inputRef.current.focus();
+  }, [props.contactId]);
 
   return (
     <form
