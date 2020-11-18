@@ -23,7 +23,7 @@ export default function ChatPage() {
           selectedUserId={parseInt(router.query.senderId as string, 10)}
         />
       </div>
-      <div className="md:col-span-3">
+      <div className="lg:col-span-3">
         <Chat />
       </div>
     </Layout>

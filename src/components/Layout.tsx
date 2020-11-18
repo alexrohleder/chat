@@ -15,7 +15,7 @@ function Layout(props: Props) {
       </Head>
       <LayoutHeader />
       <main className="flex-1 lg:container lg:m-auto p-4">
-        <div className="grid md:grid-cols-4 gap-4 h-full">{props.children}</div>
+        <div className="grid lg:grid-cols-4 gap-4 h-full">{props.children}</div>
       </main>
     </div>
   );

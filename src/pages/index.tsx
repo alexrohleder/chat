@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <Layout title="Chat">
       <ContactList contacts={contacts} />
-      <div className="hidden md:block md:col-span-3">
+      <div className="hidden lg:col-span-3 lg:bg-gray-300 lg:w-full lg:h-full lg:flex lg:items-center lg:justify-center lg:rounded-md">
         select a contact to start
       </div>
     </Layout>

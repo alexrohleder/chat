@@ -12,22 +12,24 @@ type Props = {
 
 function Contact(props: Props) {
   const variant = props.isSelected
-    ? "bg-gray-200 border-gray-400"
-    : "hover:bg-gray-200 hover:border-gray-400 cursor-pointer transition-colors ease-in-out duration-150";
+    ? "bg-gray-300 border-gray-300"
+    : "hover:bg-gray-300 hover:border-gray-300 cursor-pointer transition-colors ease-in-out duration-150";
 
   return (
-    <div className={`flex gap-4 items-center p-4 rounded-md border ${variant}`}>
+    <div
+      className={`flex gap-4 items-center p-4 rounded-md border border-transparent ${variant}`}
+    >
       <ContactAvatar size="lg" src={props.photo} name={props.name} />
       <div className="flex flex-1 flex-col gap-1 overflow-hidden">
         <div className="flex justify-between items-center overflow-hidden">
           <div className="font-bold truncate">{props.name}</div>
           <ContactOnlineStatus isActive={props.isActive} />
         </div>
-        {props.lastMessage ? (
-          <div className="truncate">{props.lastMessage}</div>
-        ) : (
-          <div className="text-gray-700">Click to send a message</div>
-        )}
+        <div className="truncate">
+          {props.lastMessage || (
+            <span className="text-gray-700">Click to send a message</span>
+          )}
+        </div>
       </div>
     </div>
   );
